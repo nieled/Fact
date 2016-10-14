@@ -9,15 +9,15 @@ package Acceso.Entidad;
  *
  * @author niel
  */
-public class Title {
+public class MasterTitle {
 
     private int emp_no;
     private String title;
 
-    public Title() {
+    public MasterTitle() {
     }
 
-    public Title(int emp_no, String title) {
+    public MasterTitle(int emp_no, String title) {
         this.emp_no = emp_no;
         this.title = title;
     }

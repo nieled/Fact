@@ -11,24 +11,25 @@ import java.sql.Date;
  *
  * @author niel
  */
-public class Employee {
-
+public class ListaEmpleados {
     private int emp_no;
     private Date birth_date;
     private String first_name, last_name;
     private char gender;
     private Date hire_date;
+    private String title;
 
-    public Employee() {
+    public ListaEmpleados() {
     }
 
-    public Employee(int emp_no, Date birth_date, String first_name, String last_name, char gender, Date hire_date) {
+    public ListaEmpleados(int emp_no, Date birth_date, String first_name, String last_name, char gender, Date hire_date, String title) {
         this.emp_no = emp_no;
         this.birth_date = birth_date;
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
         this.hire_date = hire_date;
+        this.title = title;
     }
 
     public int getEmp_no() {
@@ -79,4 +80,13 @@ public class Employee {
         this.hire_date = hire_date;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    
 }
