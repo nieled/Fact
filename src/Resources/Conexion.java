@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acceso.Objeto;
+package Resources;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  *
  * @author niel
  */
-public class Connection {
+public class Conexion {
     //DB Ports
     private static final String MYSQL_PORT = "3306";
     private static final String MSSQL_PORT = "1433";
@@ -46,9 +46,9 @@ public class Connection {
         String password = PASSWORD;
         try {
             Class.forName(driver).newInstance();
-            Connection.conn = DriverManager.getConnection(url + dbName, userName, password);
+            Conexion.conn = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Conectado a la base de datos");
-            Connection.conn.close();
+            Conexion.conn.close();
             System.out.println("Desconectado de la base de datos.");
             return true;
         } catch (Exception e) {
