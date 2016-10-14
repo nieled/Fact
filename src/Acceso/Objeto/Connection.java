@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  *
  * @author niel
  */
-public class Conexion {
+public class Connection {
     //DB Ports
     private static final String MYSQL_PORT = "3306";
     private static final String MSSQL_PORT = "1433";
@@ -46,9 +46,9 @@ public class Conexion {
         String password = PASSWORD;
         try {
             Class.forName(driver).newInstance();
-            Conexion.conn = DriverManager.getConnection(url + dbName, userName, password);
+            Connection.conn = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Conectado a la base de datos");
-            Conexion.conn.close();
+            Connection.conn.close();
             System.out.println("Desconectado de la base de datos.");
             return true;
         } catch (Exception e) {
