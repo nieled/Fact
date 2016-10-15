@@ -7,12 +7,16 @@ package Resources;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author niel
  */
 public class Conexion {
+
     //DB Ports
     private static final String MYSQL_PORT = "3306";
     private static final String MSSQL_PORT = "1433";
@@ -34,10 +38,10 @@ public class Conexion {
     private static final String DB_NAME = "fact";
     private static final String USERNAME = "niel";
     private static final String PASSWORD = "qjkleoiuws";
-    
+
     static Connection conn = null;
-    
-    public static boolean Connect(){
+
+    public static boolean Connect() {
         System.out.println("Conectandose a la base de datos...");
         String url = POSTGRES_URL;
         String dbName = DB_NAME;
@@ -48,8 +52,6 @@ public class Conexion {
             Class.forName(driver).newInstance();
             Conexion.conn = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Conectado a la base de datos");
-            Conexion.conn.close();
-            System.out.println("Desconectado de la base de datos.");
             return true;
         } catch (Exception e) {
             System.out.println("Ocurrio un error al intentar conectarse con la base de datos");
@@ -58,8 +60,18 @@ public class Conexion {
         }
     }
 
-    
-    
+    public static boolean Disconnect() throws SQLException {
+        Conexion.conn.close();
+        System.out.println("Desconectado de la base de datos.");
+        return true;
+    }
+
+    public static ResultSet getQuery(String query) throws SQLException {
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        return rs;
+    }
+
     public Connection getConn() {
         return conn;
     }
@@ -67,5 +79,5 @@ public class Conexion {
     public void setConn(Connection conn) {
         this.conn = conn;
     }
-    
+
 }
