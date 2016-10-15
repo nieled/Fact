@@ -5,12 +5,19 @@
  */
 package Logica.Fachada;
 
+import Logica.Objeto.Hiring;
+
 /**
  *
  * @author niel
  */
 public class HumanResources {
-    void Contratar(){
-        
+
+    
+
+    public Logica.Objeto.Hiring Contratar(int id) {
+        Logica.Objeto.Hiring hiring = new Logica.Objeto.Hiring();
+        hiring.getEmployee(id);
+        return hiring;
     }
 }
