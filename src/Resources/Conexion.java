@@ -7,6 +7,7 @@ package Resources;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -74,10 +75,14 @@ public class Conexion {
     
     public static boolean doQuery(String query) throws SQLException {
         Statement st = conn.createStatement();
-        System.out.println("Executing insert: " + query);
         st.executeUpdate(query);
         st.close();
         return true;
+    }
+    
+    public static PreparedStatement prepStmt(String query) throws SQLException {
+        PreparedStatement pst = conn.prepareStatement(query);
+        return pst;
     }
 
     public Connection getConn() {
