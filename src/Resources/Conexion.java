@@ -71,6 +71,14 @@ public class Conexion {
         ResultSet rs = st.executeQuery(query);
         return rs;
     }
+    
+    public static boolean doQuery(String query) throws SQLException {
+        Statement st = conn.createStatement();
+        System.out.println("Executing insert: " + query);
+        st.executeUpdate(query);
+        st.close();
+        return true;
+    }
 
     public Connection getConn() {
         return conn;
