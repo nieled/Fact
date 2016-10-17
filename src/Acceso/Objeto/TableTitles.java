@@ -37,7 +37,7 @@ public class TableTitles {
                 + mt.getEmp_no() + ", "
                 + "\'" + mt.getTitle() + "\'"
                 + ");");
-        return false;
+        return true;
     }
 
     public boolean updateTitle(MasterTitle oldone, MasterTitle newone) throws SQLException {
