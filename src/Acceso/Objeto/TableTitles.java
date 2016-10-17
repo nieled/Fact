@@ -8,6 +8,7 @@ package Acceso.Objeto;
 import Acceso.Entidad.MasterTitle;
 import Resources.Conexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -68,6 +69,13 @@ public class TableTitles {
                 + "emp_no=" + mt.getEmp_no()
                 + " AND title=\'" + mt.getTitle() + "\'"
                 + ";");
+        return true;
+    }
+    
+    public boolean dropTitlesByID(int emp_num) throws SQLException {
+        PreparedStatement pst = Conexion.prepStmt("DELETE FROM public.titles WHERE emp_no=?;");
+        pst.setInt(1, emp_num);
+        pst.executeUpdate();
         return true;
     }
 }
