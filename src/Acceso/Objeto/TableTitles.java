@@ -6,6 +6,8 @@
 package Acceso.Objeto;
 
 import Acceso.Entidad.MasterTitle;
+import Resources.Conexion;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -30,15 +32,31 @@ public class TableTitles {
         return ans;
     }
 
-    boolean insertTitle(MasterTitle mt) {
+    public boolean insertTitle(MasterTitle mt) throws SQLException {
+        Conexion.doQuery("INSERT INTO public.titles(emp_no, title) VALUES ("
+                + mt.getEmp_no() + ", "
+                + "\'" + mt.getTitle() + "\'"
+                + ");");
         return false;
     }
 
-    boolean updateTitle(MasterTitle mt) {
-        return false;
+    public boolean updateTitle(MasterTitle oldone, MasterTitle newone) throws SQLException {
+        Conexion.doQuery("UPDATE public.titles SET "
+                + "emp_no=" + newone.getEmp_no() + ", "
+                + "title=\'" + newone.getTitle() + "\' "
+                + "WHERE "
+                + "emp_no=" + oldone.getEmp_no()
+                + " AND title=\'" + oldone.getTitle() + "\'"
+                + ";");
+        return true;
     }
 
-    boolean deleteTitle(MasterTitle mt) {
-        return false;
+    public boolean deleteTitle(MasterTitle mt) throws SQLException {
+        Conexion.doQuery("DELETE FROM public.titles "
+                + "WHERE "
+                + "emp_no=" + mt.getEmp_no()
+                + " AND title=\'" + mt.getTitle() + "\'"
+                + ";");
+        return true;
     }
 }
