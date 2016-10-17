@@ -31,6 +31,17 @@ public class TableTitles {
         }
         return ans;
     }
+    
+    public List<MasterTitle> selectTitles(MasterTitle mt) throws SQLException {
+        List<MasterTitle> ans = new ArrayList<MasterTitle>();
+        ResultSet rs = Resources.Conexion.getQuery("SELECT * FROM TITLES WHERE EMP_NO=" + mt.getEmp_no());
+        while (rs.next()) {
+            int empNo = rs.getInt(1);
+            String title = rs.getString(1);
+            ans.add(new MasterTitle(empNo, title));
+        }
+        return ans;
+    }
 
     public boolean insertTitle(MasterTitle mt) throws SQLException {
         Conexion.doQuery("INSERT INTO public.titles(emp_no, title) VALUES ("
