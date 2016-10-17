@@ -15,14 +15,14 @@ public class ListaEmpleados {
     private int emp_no;
     private Date birth_date;
     private String first_name, last_name;
-    private char gender;
+    private String gender;
     private Date hire_date;
     private String title;
 
     public ListaEmpleados() {
     }
 
-    public ListaEmpleados(int emp_no, Date birth_date, String first_name, String last_name, char gender, Date hire_date, String title) {
+    public ListaEmpleados(int emp_no, Date birth_date, String first_name, String last_name, String gender, Date hire_date, String title) {
         this.emp_no = emp_no;
         this.birth_date = birth_date;
         this.first_name = first_name;
@@ -64,11 +64,11 @@ public class ListaEmpleados {
         this.last_name = last_name;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -86,6 +86,11 @@ public class ListaEmpleados {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "ListaEmpleados{" + "emp_no=" + emp_no + ", birth_date=" + birth_date + ", first_name=" + first_name + ", last_name=" + last_name + ", gender=" + gender + ", hire_date=" + hire_date + ", title=" + title + '}';
     }
     
     
