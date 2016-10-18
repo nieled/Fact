@@ -27,7 +27,7 @@ public class TableTitles {
         ResultSet rs = Resources.Conexion.getQuery("SELECT * FROM TITLES WHERE EMP_NO=" + emp_no);
         while (rs.next()) {
             int empNo = rs.getInt(1);
-            String title = rs.getString(1);
+            String title = rs.getString(2);
             ans.add(new MasterTitle(empNo, title));
         }
         return ans;
@@ -78,4 +78,5 @@ public class TableTitles {
         pst.executeUpdate();
         return true;
     }
+    
 }
