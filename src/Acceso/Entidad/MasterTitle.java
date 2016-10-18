@@ -38,4 +38,8 @@ public class MasterTitle {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return "MasterTitle{" + "emp_no=" + emp_no + ", title=" + title + '}';
+    }
 }
