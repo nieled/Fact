@@ -7,6 +7,9 @@ package Logica.Objeto;
 
 import Acceso.Entidad.MasterEmployee;
 import Acceso.Entidad.MasterTitle;
+import Acceso.Objeto.QueryEmployees;
+import Acceso.Objeto.TableEmployees;
+import Acceso.Objeto.TableTitles;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,31 +17,49 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Contrataciones
+ * Objeto de negocio
  *
  * @author niel
  */
 public class Hiring {
 
-    public List<MasterEmployee> masterEmployees = new ArrayList<MasterEmployee>();
+    TableEmployees te = new TableEmployees();
+    TableTitles tt = new TableTitles();
+    QueryEmployees qe = new QueryEmployees();
 
-    public boolean createEmployee() {
-        return false;
+    public boolean createEmployee(MasterEmployee me) throws SQLException {
+        te.insertEmployee(me);
+        return true;
+    }
+    
+    public boolean updateEmployee(MasterEmployee me) throws SQLException {
+        te.updateEmployee(me);
+        return true;
     }
 
     public boolean getEmployee(int id) {
-        try {
-            Acceso.Objeto.TableEmployees te = new Acceso.Objeto.TableEmployees();
-            this.masterEmployees.add(te.selectEmployee(id));
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(Hiring.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-
-    }
-
-    public boolean deleteEmployee() {
+        
         return false;
     }
+    
+    public List<MasterTitle> getTitles(int id) throws SQLException {
+        return tt.selectTitles(id);
+    }
+    
+    public boolean getEmployees(){
+        return false;
+    }
+
+    
+    
+    public boolean deleteEmployee(int empID) throws SQLException {
+        te.deleteEmployee(empID);
+        return true;
+    }
+
+    public List<MasterEmployee> getMasterEmployees() throws SQLException {
+        List<MasterEmployee> ans =  te.selectEmployees();
+        return ans;
+    }
+    
 }
